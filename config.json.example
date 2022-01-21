@@ -1,0 +1,33 @@
+{
+  "backups": [
+    {
+      "name": "default",
+      "directories": [
+        {
+          "path": "/home/user/node_solution1",
+          "excluded": [
+            "node_modules/*"
+          ]
+        },
+        {
+          "path": "/home/user/node_solution2",
+          "excluded": [
+            "node_modules/*"
+          ]
+        }
+      ],
+      "savepoints": [
+        {
+          "driver": "sftp",
+          "identity": {
+            "host": "127.0.0.1",
+            "port": "22",
+            "username": "user",
+            "password": "password",
+            "path": "/home/user/backups/"
+          }
+        }
+      ]
+    }
+  ]
+}
