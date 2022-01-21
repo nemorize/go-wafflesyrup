@@ -8,19 +8,18 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"time"
 )
 
 func Savepoint(filePath string, identity map[string]string) error {
 	host := identity["host"]
-	port, _ := strconv.ParseInt(identity["port"], 10, 0)
+	port := identity["port"]
 	user := identity["username"]
 	password := identity["password"]
 	remotePath := identity["path"]
 
-	connection, err := createConnection(host, int(port), user, password)
+	connection, err := createConnection(host, port, user, password)
 	if err != nil {
 		return errors.New("failed to connect sftp server: " + err.Error())
 	}
@@ -37,7 +36,7 @@ type sftpClient struct {
 	host		string
 	user		string
 	password	string
-	port		int
+	port		string
 	*sftp.Client
 }
 
@@ -49,7 +48,7 @@ func (sc *sftpClient) connect() (err error) {
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
 
-	addr := fmt.Sprintf("%s:%d", sc.host, sc.port)
+	addr := fmt.Sprintf("%s:%s", sc.host, sc.port)
 	conn, err := ssh.Dial("tcp", addr, config)
 	if err != nil {
 		return err
@@ -71,7 +70,6 @@ func (sc *sftpClient) put(localFile, remoteFile string) (err error) {
 	}
 	defer srcFile.Close()
 
-	// Make remote directories recursion
 	parent := filepath.Dir(remoteFile)
 	path := string(filepath.Separator)
 	dirs := strings.Split(parent, path)
@@ -90,12 +88,12 @@ func (sc *sftpClient) put(localFile, remoteFile string) (err error) {
 	return
 }
 
-func createConnection(host string, port int, user string, password string) (client *sftpClient, err error) {
+func createConnection(host string, port string, user string, password string) (client *sftpClient, err error) {
 	switch {
 	case `` == strings.TrimSpace(host),
 		`` == strings.TrimSpace(user),
 		`` == strings.TrimSpace(password),
-		0 >= port || port > 65535:
+		`` == strings.TrimSpace(port):
 		return nil, errors.New("invalid parameters")
 	}
 
