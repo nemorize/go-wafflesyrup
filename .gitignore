@@ -1,4 +1,6 @@
 /config.json
+/credentials/
+/tokens/
 /tmp/
 /bin/
 

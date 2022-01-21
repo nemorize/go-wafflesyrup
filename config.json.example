@@ -26,6 +26,13 @@
             "password": "password",
             "path": "/home/user/backups/"
           }
+        },
+        {
+          "driver": "gdrive",
+          "identity": {
+            "credentialFile": "./credentials/client_secret_xxx.apps.googleusercontent.com.json",
+            "folderId": "111-11111111112222222222333333333"
+          }
         }
       ]
     }

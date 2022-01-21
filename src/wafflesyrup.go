@@ -8,6 +8,8 @@ import (
 	"os"
 	"os/exec"
 	"time"
+
+	"wafflesyrup/savepoint/gdrive"
 	"wafflesyrup/savepoint/sftp"
 )
 
@@ -180,6 +182,8 @@ func sendToSavepoints(filePath string, savepoints []Savepoint) {
 		switch savepoint.Driver {
 		case "sftp":
 			savepointDriver = sftp.Savepoint
+		case "gdrive":
+			savepointDriver = gdrive.Savepoint
 		}
 
 		if savepointDriver != nil {
