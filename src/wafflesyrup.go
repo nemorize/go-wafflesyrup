@@ -97,7 +97,7 @@ func start(args []string) {
 	}
 
 	for _, backup := range backups {
-		if args[2] != backup.Name {
+		if len(args) > 2 && args[2] != backup.Name {
 			continue
 		}
 
