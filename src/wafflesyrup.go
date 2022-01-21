@@ -97,6 +97,10 @@ func start(args []string) {
 	}
 
 	for _, backup := range backups {
+		if args[2] != backup.Name {
+			continue
+		}
+
 		fmt.Println("Backup started: " + backup.Name)
 
 		err = doBackup(backup)
@@ -199,8 +203,8 @@ func help() {
 	fmt.Println("wafflesyrup <command>")
 	fmt.Println("")
 	fmt.Println("Usage:")
+	fmt.Println("  wafflesyrup start					: Start backup")
+	fmt.Println("  wafflesyrup start <name>					: Start backup with a specific backup set.")
 	fmt.Println("")
-	fmt.Println("wafflesyrup start					: Start backup")
-	fmt.Println("")
-	fmt.Println("wafflesyrup version				: Displays the current running version of WaffleSyrup. Aliased as v.")
+	fmt.Println("  wafflesyrup version					: Displays the current running version of WaffleSyrup. Aliased as v.")
 }
