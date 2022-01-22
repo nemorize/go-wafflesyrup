@@ -89,6 +89,7 @@ Currently unavailable.
 WaffleSyrup supports two drivers.
 * [sftp](#sftp)
 * [gdrive (google-drive)](#gdrive)
+* [dropbox](#dropbox)
 
 ### sftp
 `sftp` requires `host`, `port`, `username`, `password` fields at `identity`.
