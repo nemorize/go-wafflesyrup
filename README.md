@@ -124,3 +124,17 @@ After receives, WaffleSyrup create ./tokens/ directory and will save tokens into
   }
 }
 ```
+
+### dropbox
+`dropbox` requires `accessToken`, `folderPath` fields at `identity`.
+You can create an app and obtain accessToken from https://www.dropbox.com/developers/apps/create.
+
+```json
+{
+  "driver": "dropbox",
+  "identity": {
+    "accessToken": "sl.xxx",
+    "folderId": "/path/to/upload"
+  }
+}
+```

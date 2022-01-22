@@ -33,6 +33,13 @@
             "credentialFile": "./credentials/client_secret_xxx.apps.googleusercontent.com.json",
             "folderId": "111-11111111112222222222333333333"
           }
+        },
+        {
+          "driver": "dropbox",
+          "identity": {
+            "accessToken": "sl.xxx",
+            "folderPath": "/path/to/upload"
+          }
         }
       ]
     }
