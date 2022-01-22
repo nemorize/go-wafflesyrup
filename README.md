@@ -80,7 +80,6 @@ Show details at [Supported Drivers](#supported-drivers)
   ]
 }
 ```
-~~LMAO https://ubuntuforums.org/archive/index.php/t-825400.html~~
 
 ### Postscripts
 Currently unavailable.
@@ -105,6 +104,7 @@ WaffleSyrup supports two drivers.
   }
 }
 ```
+~~LMAO https://ubuntuforums.org/archive/index.php/t-825400.html~~
 
 ### gdrive
 `gdrive` requires `credentialFile`, `folderId` fields at `identity`.
