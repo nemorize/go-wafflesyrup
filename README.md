@@ -135,7 +135,7 @@ You can create an app and obtain accessToken from https://www.dropbox.com/develo
   "driver": "dropbox",
   "identity": {
     "accessToken": "sl.xxx",
-    "folderId": "/path/to/upload"
+    "folderPath": "/path/to/upload"
   }
 }
 ```
