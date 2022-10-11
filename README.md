@@ -86,7 +86,7 @@ Currently unavailable.
 
 ## Supported Drivers
 
-WaffleSyrup supports two drivers.
+WaffleSyrup supports 3 drivers.
 * [sftp](#sftp)
 * [gdrive (google-drive)](#gdrive)
 * [dropbox](#dropbox)
