@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	WaffleSyrupVersion = "0.0.1"
+	WaffleSyrupVersion = "0.1.1"
 )
 
 func main() {
@@ -42,24 +42,24 @@ func main() {
 }
 
 type Config struct {
-	Backups		[]Backup	`json:"backups"`
+	Backups []Backup `json:"backups"`
 }
 
 type Backup struct {
-	Name		string			`json:"name"`
-	Directories	[]Directory		`json:"directories"`
-	Savepoints 	[]Savepoint		`json:"savepoints"`
-	Postscripts []string 		`json:"postscripts"`
+	Name        string      `json:"name"`
+	Directories []Directory `json:"directories"`
+	Savepoints  []Savepoint `json:"savepoints"`
+	Postscripts []string    `json:"postscripts"`
 }
 
 type Directory struct {
-	Path		string		`json:"path"`
-	Excluded	[]string	`json:"excluded"`
+	Path     string   `json:"path"`
+	Excluded []string `json:"excluded"`
 }
 
 type Savepoint struct {
-	Driver		string				`json:"driver"`
-	Identity	map[string]string	`json:"identity"`
+	Driver   string            `json:"driver"`
+	Identity map[string]string `json:"identity"`
 }
 
 func GetConfig() (Config, error) {
@@ -113,7 +113,6 @@ func start(args []string) {
 	}
 }
 
-
 func doBackup(backup Backup) error {
 	directories := backup.Directories
 	if len(directories) == 0 {
@@ -154,7 +153,7 @@ func createDirectoryArrays(directories []Directory) ([]string, []string) {
 
 		if len(directory.Excluded) > 0 {
 			for _, excludedPath := range directory.Excluded {
-				excluded = append(excluded, "--exclude=" + directory.Path + "/" + excludedPath)
+				excluded = append(excluded, "--exclude="+directory.Path+"/"+excludedPath)
 			}
 		}
 	}
@@ -199,6 +198,8 @@ func sendToSavepoints(filePath string, savepoints []Savepoint) {
 				fmt.Println(err)
 			}
 		}
+
+		_ = os.Remove(filePath)
 	}
 }
 
