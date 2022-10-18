@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	WaffleSyrupVersion = "0.1.1"
+	WaffleSyrupVersion = "0.1.2"
 )
 
 func main() {
@@ -198,9 +198,9 @@ func sendToSavepoints(filePath string, savepoints []Savepoint) {
 				fmt.Println(err)
 			}
 		}
-
-		_ = os.Remove(filePath)
 	}
+
+	_ = os.Remove(filePath)
 }
 
 func help() {
